@@ -4,7 +4,7 @@
 #
 Name     : faba-icon-theme
 Version  : 4.0.8
-Release  : 7
+Release  : 8
 URL      : https://github.com/moka-project/faba-icon-theme/archive/v4.0.8.tar.gz
 Source0  : https://github.com/moka-project/faba-icon-theme/archive/v4.0.8.tar.gz
 Summary  : No detailed summary available
