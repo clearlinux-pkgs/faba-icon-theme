@@ -4,7 +4,7 @@
 #
 Name     : faba-icon-theme
 Version  : 4.1.2
-Release  : 11
+Release  : 12
 URL      : https://github.com/moka-project/faba-icon-theme/archive/v4.1.2.tar.gz
 Source0  : https://github.com/moka-project/faba-icon-theme/archive/v4.1.2.tar.gz
 Summary  : Faba Icon theme
