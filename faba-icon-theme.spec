@@ -4,12 +4,12 @@
 #
 Name     : faba-icon-theme
 Version  : 4.1.2
-Release  : 13
+Release  : 15
 URL      : https://github.com/moka-project/faba-icon-theme/archive/v4.1.2.tar.gz
 Source0  : https://github.com/moka-project/faba-icon-theme/archive/v4.1.2.tar.gz
 Summary  : Faba Icon theme
 Group    : Development/Tools
-License  : CC-BY-SA-4.0 GPL-3.0 LGPL-3.0
+License  : CC-BY-SA-4.0 LGPL-3.0
 Requires: faba-icon-theme-data
 BuildRequires : gtk+
 BuildRequires : pkgconfig(gtk+-3.0)
@@ -31,17 +31,23 @@ data components for the faba-icon-theme package.
 %patch1 -p1
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
+export LANG=C
+export SOURCE_DATE_EPOCH=1528216471
 %autogen --disable-static
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 
 %check
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
+export SOURCE_DATE_EPOCH=1528216471
 rm -rf %{buildroot}
 %make_install
 ## make_install_append content
@@ -53,6 +59,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Faba
 
 %files data
 %defattr(-,root,root,-)
+%exclude /usr/share/icons/Faba/icon-theme.cache
 /usr/share/icons/Faba/16x16/actions/add-files-to-archive.svg
 /usr/share/icons/Faba/16x16/actions/add.svg
 /usr/share/icons/Faba/16x16/actions/application-menu.svg
@@ -1440,7 +1447,6 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Faba
 /usr/share/icons/Faba/96x96/places/folder-videos.svg
 /usr/share/icons/Faba/96x96/places/folder.svg
 /usr/share/icons/Faba/96x96/places/user-home.svg
-/usr/share/icons/Faba/icon-theme.cache
 /usr/share/icons/Faba/index.theme
 /usr/share/icons/Faba/symbolic/actions/action-unavailable-symbolic.svg
 /usr/share/icons/Faba/symbolic/actions/bookmark-new-symbolic.svg
