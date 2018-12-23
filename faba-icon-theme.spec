@@ -4,19 +4,17 @@
 #
 Name     : faba-icon-theme
 Version  : 4.3
-Release  : 16
-URL      : https://github.com/moka-project/faba-icon-theme/archive/v4.3.tar.gz
-Source0  : https://github.com/moka-project/faba-icon-theme/archive/v4.3.tar.gz
+Release  : 17
+URL      : https://github.com/snwh/faba-icon-theme/archive/v4.3.tar.gz
+Source0  : https://github.com/snwh/faba-icon-theme/archive/v4.3.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC-BY-SA-4.0 GPL-3.0
-Requires: faba-icon-theme-license
-Requires: faba-icon-theme-data
+Requires: faba-icon-theme-data = %{version}-%{release}
+Requires: faba-icon-theme-license = %{version}-%{release}
+BuildRequires : buildreq-meson
 BuildRequires : gtk+
-BuildRequires : meson
-BuildRequires : ninja
 BuildRequires : pkgconfig(gtk+-3.0)
-BuildRequires : python3
 Patch1: 0001-Add-Makefile.patch
 
 %description
@@ -49,19 +47,19 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1530989073
+export SOURCE_DATE_EPOCH=1545591080
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain   builddir
 ninja -v -C builddir
 
 %install
-mkdir -p %{buildroot}/usr/share/doc/faba-icon-theme
-cp LICENSE_GPL %{buildroot}/usr/share/doc/faba-icon-theme/LICENSE_GPL
-cp LICENSE_CC-BY-SA %{buildroot}/usr/share/doc/faba-icon-theme/LICENSE_CC-BY-SA
-cp COPYING %{buildroot}/usr/share/doc/faba-icon-theme/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/faba-icon-theme
+cp COPYING %{buildroot}/usr/share/package-licenses/faba-icon-theme/COPYING
+cp LICENSE_CC-BY-SA %{buildroot}/usr/share/package-licenses/faba-icon-theme/LICENSE_CC-BY-SA
+cp LICENSE_GPL %{buildroot}/usr/share/package-licenses/faba-icon-theme/LICENSE_GPL
 DESTDIR=%{buildroot} ninja -C builddir install
-## make_install_append content
+## install_append content
 gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Faba
-## make_install_append end
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -1905,7 +1903,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Faba
 /usr/share/icons/Faba/symbolic/status/weather-storm-symbolic.svg
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/faba-icon-theme/COPYING
-/usr/share/doc/faba-icon-theme/LICENSE_CC-BY-SA
-/usr/share/doc/faba-icon-theme/LICENSE_GPL
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/faba-icon-theme/COPYING
+/usr/share/package-licenses/faba-icon-theme/LICENSE_CC-BY-SA
+/usr/share/package-licenses/faba-icon-theme/LICENSE_GPL
