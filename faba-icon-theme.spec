@@ -4,7 +4,7 @@
 #
 Name     : faba-icon-theme
 Version  : 4.3
-Release  : 17
+Release  : 18
 URL      : https://github.com/snwh/faba-icon-theme/archive/v4.3.tar.gz
 Source0  : https://github.com/snwh/faba-icon-theme/archive/v4.3.tar.gz
 Summary  : No detailed summary available
